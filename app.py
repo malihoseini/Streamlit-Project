@@ -32,7 +32,7 @@ class PrepProcesor(BaseEstimator, TransformerMixin):
         X['Embarked'] = X['Embarked'].fillna('M')
         X = X.drop(['PassengerId', 'Name', 'Ticket','Cabin'], axis=1)
         return X
-#model = joblib.load('C:\\Users\\Mojtaba\\Downloads\\Compressed\\Streamlit-Titanic\\Streamlit-Titanic\\xgbpipe.joblib')
+#model = joblib.load('xgbpipe.joblib')
 model = joblib.load('C:\\Users\\Mojtaba\\xgbpipe.joblib')
 def predict():
     row = np.array([passengerid,pclass,name,sex,age,sibsp,parch,ticket,fare,cabin,embarked])
@@ -42,4 +42,5 @@ def predict():
         st.success('Passenger Survived :material/thumb_up:')
     else: 
         st.error('Passenger did not Survive :material/thumb_down:')
+
 trigger = st.button('Predict', on_click=predict)
